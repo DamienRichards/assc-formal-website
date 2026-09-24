@@ -1,0 +1,1 @@
+CREATE POLICY "Anyone can upload guest photos" ON storage.objects FOR INSERT TO anon, authenticated WITH CHECK (bucket_id = 'guest-photos');
