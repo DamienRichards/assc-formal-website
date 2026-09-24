@@ -34,9 +34,17 @@ jobs:
 
       - name: Build project
         run: bun run build
-        # Depending on Nitro configuration, this may need NITRO_PRESET=github-pages
         env:
-          NITRO_PRESET: github-pages
+          NITRO_PRESET: node-server
+
+      - name: Generate static index.html
+        run: |
+          node .output/server/index.mjs &
+          SERVER_PID=$!
+          sleep 5
+          curl -s http://localhost:3000/assc-formal-website/ -o .output/public/index.html
+          curl -s http://localhost:3000/assc-formal-website/ -o .output/public/404.html
+          kill $SERVER_PID
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

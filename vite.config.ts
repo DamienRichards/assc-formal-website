@@ -11,8 +11,7 @@ export default defineConfig({
     base: "/assc-formal-website/",
   },
   tanstackStart: {
-    // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
-    // nitro/vite builds from this
-    server: { entry: "server" },
+    ssr: false,
+    server: { entry: "server.ts" },
   },
 });
