@@ -11,7 +11,6 @@ export default defineConfig({
     base: "/assc-formal-website/",
   },
   tanstackStart: {
-    ssr: false,
     server: { entry: "server.ts" },
   },
 });
